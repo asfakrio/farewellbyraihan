@@ -5,7 +5,7 @@ import React, { Suspense, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { gsap } from 'gsap';
 import ConfettiAnimation from '@/components/ConfettiAnimation';
-import MusicPlayer from '@/components/MusicPlayer'; // Assuming you create this component
+import MusicPlayer from '@/components/MusicPlayer'; 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 const FarewellContent: React.FC = () => {
@@ -17,7 +17,7 @@ const FarewellContent: React.FC = () => {
     "Now, as we step into a new phase of life, I sincerely wish you all the happiness, success, and peace you deserve. May your dreams turn into reality, and may life treat you with kindness wherever you go.",
     "Never forget how far you’ve come, and never stop believing in yourself. No matter where life takes us, you’ll always be a friend I’m proud to have.",
     "Good luck for everything that’s coming your way. Stay happy, stay true, and always keep that smile alive! 🎓✨",
-    "From Raihan" // Simplified signature
+    "From Raihan"
   ];
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,8 +42,8 @@ const FarewellContent: React.FC = () => {
       );
       if (nameSpan) {
         gsap.fromTo(nameSpan, 
-          { scale: 1, color: '#F4D03F' }, // Using HEX for primary color
-          { scale: 1.1, color: '#E07A5F', duration: 1.5, yoyo: true, repeat: -1, ease: 'power1.inOut' } // Using HEX for accent color
+          { scale: 1, color: '#F4D03F' }, 
+          { scale: 1.1, color: '#E07A5F', duration: 1.5, yoyo: true, repeat: -1, ease: 'power1.inOut' }
         );
       }
     }
@@ -61,7 +61,7 @@ const FarewellContent: React.FC = () => {
         tl.fromTo(pRef, 
           { opacity: 0, x: -50 }, 
           { opacity: 1, x: 0, duration: 0.7 }, 
-          "-=0.4"
+          "-=0.4" 
         );
       }
     });
@@ -85,7 +85,7 @@ const FarewellContent: React.FC = () => {
             <p 
               key={index} 
               ref={el => messageParagraphRefs.current[index] = el}
-              className="leading-relaxed opacity-0 whitespace-pre-line" // Initial state for GSAP, added whitespace-pre-line for \n
+              className="leading-relaxed opacity-0 whitespace-pre-line"
             >
               {paragraph}
             </p>
@@ -93,11 +93,14 @@ const FarewellContent: React.FC = () => {
         </CardContent>
       </Card>
       
-      {/* 
-        IMPORTANT: You need to add a royalty-free audio file named 'background-music.mp3' 
-        into the `public/audio/` directory for the music to play.
-      */}
-      <MusicPlayer src="/audio/background-music.mp3" />
+      {/* Music Player Section */}
+      <div className="mt-8"> 
+        {/* 
+          IMPORTANT: You need to add a royalty-free audio file named 'background-music.mp3' 
+          into the `public/audio/` directory for the music to play.
+        */}
+        <MusicPlayer src="/audio/background-music.mp3" />
+      </div>
     </div>
   );
 };

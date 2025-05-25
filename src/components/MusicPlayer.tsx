@@ -1,8 +1,10 @@
+
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface MusicPlayerProps {
   src: string;
@@ -76,15 +78,20 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ src }) => {
 
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex items-center space-x-2 p-2 bg-background/70 backdrop-blur-sm rounded-lg shadow-md">
-      <audio ref={audioRef} src={src} preload="auto" />
-      <Button onClick={togglePlayPause} variant="ghost" size="icon" aria-label={isPlaying ? "Pause music" : "Play music"}>
-        {isPlaying ? <Pause className="h-5 w-5 text-primary" /> : <Play className="h-5 w-5 text-primary" />}
-      </Button>
-      <Button onClick={toggleMute} variant="ghost" size="icon" aria-label={isMuted ? "Unmute music" : "Mute music"}>
-        {isMuted ? <VolumeX className="h-5 w-5 text-primary" /> : <Volume2 className="h-5 w-5 text-primary" />}
-      </Button>
-    </div>
+    <Card className="w-full max-w-xs mx-auto bg-background/80 backdrop-blur-sm shadow-xl rounded-xl">
+      <CardHeader className="pt-4 pb-2 text-center">
+        <CardTitle className="text-xl font-heading text-primary">Soundtrack</CardTitle>
+      </CardHeader>
+      <CardContent className="flex items-center justify-center space-x-3 p-4">
+        <audio ref={audioRef} src={src} preload="auto" className="hidden" />
+        <Button onClick={togglePlayPause} variant="ghost" size="icon" aria-label={isPlaying ? "Pause music" : "Play music"}>
+          {isPlaying ? <Pause className="h-6 w-6 text-primary" /> : <Play className="h-6 w-6 text-primary" />}
+        </Button>
+        <Button onClick={toggleMute} variant="ghost" size="icon" aria-label={isMuted ? "Unmute music" : "Mute music"}>
+          {isMuted ? <VolumeX className="h-6 w-6 text-primary" /> : <Volume2 className="h-6 w-6 text-primary" />}
+        </Button>
+      </CardContent>
+    </Card>
   );
 };
 
