@@ -17,7 +17,7 @@ const FarewellContent: React.FC = () => {
     "Now, as we step into a new phase of life, I sincerely wish you all the happiness, success, and peace you deserve. May your dreams turn into reality, and may life treat you with kindness wherever you go.",
     "Never forget how far you’ve come, and never stop believing in yourself. No matter where life takes us, you’ll always be a friend I’m proud to have.",
     "Good luck for everything that’s coming your way. Stay happy, stay true, and always keep that smile alive! 🎓✨",
-    "With warmest wishes,\nRaihan"
+    "From Raihan" // Simplified signature
   ];
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,7 +43,6 @@ const FarewellContent: React.FC = () => {
       if (nameSpan) {
         gsap.fromTo(nameSpan, 
           { scale: 1, color: '#F4D03F' }, // Using HEX for primary color
-          // Removed textShadow from the animation to prevent potential parsing errors
           { scale: 1.1, color: '#E07A5F', duration: 1.5, yoyo: true, repeat: -1, ease: 'power1.inOut' } // Using HEX for accent color
         );
       }
