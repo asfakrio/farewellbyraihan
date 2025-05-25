@@ -41,9 +41,9 @@ const FarewellContent: React.FC = () => {
       );
       if (nameSpan) {
         gsap.fromTo(nameSpan, 
-          { scale: 1, color: 'hsl(var(--primary))' }, 
+          { scale: 1, color: '#F4D03F' }, // Using HEX for primary color
           // Removed textShadow from the animation to prevent potential parsing errors
-          { scale: 1.1, color: 'hsl(var(--accent))', duration: 1.5, yoyo: true, repeat: -1, ease: 'power1.inOut' }
+          { scale: 1.1, color: '#E07A5F', duration: 1.5, yoyo: true, repeat: -1, ease: 'power1.inOut' } // Using HEX for accent color
         );
       }
     }
@@ -60,7 +60,6 @@ const FarewellContent: React.FC = () => {
       if (pRef) {
         tl.fromTo(pRef, 
           { opacity: 0, x: -50 }, 
-          // Removed stagger from vars object as it's for array targets, not single element pRef
           { opacity: 1, x: 0, duration: 0.7 }, 
           `-=0.4` 
         );
