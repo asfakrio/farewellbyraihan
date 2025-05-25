@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { Suspense, useEffect, useRef } from 'react';
@@ -41,7 +42,8 @@ const FarewellContent: React.FC = () => {
       if (nameSpan) {
         gsap.fromTo(nameSpan, 
           { scale: 1, color: 'hsl(var(--primary))' }, 
-          { scale: 1.1, color: 'hsl(var(--accent))', duration: 1.5, yoyo: true, repeat: -1, ease: 'power1.inOut', textShadow: '0 0 10px hsl(var(--accent))' }
+          // Removed textShadow from the animation to prevent potential parsing errors
+          { scale: 1.1, color: 'hsl(var(--accent))', duration: 1.5, yoyo: true, repeat: -1, ease: 'power1.inOut' }
         );
       }
     }
@@ -54,11 +56,12 @@ const FarewellContent: React.FC = () => {
       );
     }
 
-    messageParagraphRefs.current.forEach((pRef, index) => {
+    messageParagraphRefs.current.forEach((pRef) => {
       if (pRef) {
         tl.fromTo(pRef, 
           { opacity: 0, x: -50 }, 
-          { opacity: 1, x: 0, duration: 0.7, stagger: 0.3 },
+          // Removed stagger from vars object as it's for array targets, not single element pRef
+          { opacity: 1, x: 0, duration: 0.7 }, 
           `-=0.4` 
         );
       }
@@ -117,4 +120,3 @@ function LoadingState() {
     </div>
   );
 }
-
