@@ -42,7 +42,8 @@ const FarewellContent: React.FC = () => {
       );
       if (nameSpan) {
         gsap.fromTo(nameSpan, 
-          { scale: 1, color: '#F4D03F' }, 
+          { scale: 1, color: '#F4D03F' }, // Using explicit hex for GSAP reliability
+          // Removed textShadow from the animation to prevent potential parsing errors
           { scale: 1.1, color: '#E07A5F', duration: 1.5, yoyo: true, repeat: -1, ease: 'power1.inOut' }
         );
       }
@@ -60,6 +61,7 @@ const FarewellContent: React.FC = () => {
       if (pRef) {
         tl.fromTo(pRef, 
           { opacity: 0, x: -50 }, 
+          // Removed stagger as it's applied to a single target here
           { opacity: 1, x: 0, duration: 0.7 }, 
           "-=0.4" 
         );
@@ -85,7 +87,7 @@ const FarewellContent: React.FC = () => {
             <p 
               key={index} 
               ref={el => messageParagraphRefs.current[index] = el}
-              className="leading-relaxed opacity-0 whitespace-pre-line"
+              className="leading-relaxed opacity-0 whitespace-pre-line" // Added whitespace-pre-line
             >
               {paragraph}
             </p>
@@ -93,14 +95,12 @@ const FarewellContent: React.FC = () => {
         </CardContent>
       </Card>
       
-      {/* Music Player Section */}
-      <div className="mt-8"> 
-        {/* 
-          IMPORTANT: You need to add a royalty-free audio file named 'background-music.mp3' 
-          into the `public/audio/` directory for the music to play.
-        */}
-        <MusicPlayer src="/audio/background-music.mp3" />
-      </div>
+      {/* 
+        MusicPlayer will attempt to autoplay.
+        IMPORTANT: You need to add a royalty-free audio file named 'background-music.mp3' 
+        into the `public/audio/` directory for the music to play.
+      */}
+      <MusicPlayer src="/audio/background-music.mp3" />
     </div>
   );
 };
