@@ -16,7 +16,8 @@ const FarewellContent: React.FC = () => {
     "As our college journey comes to an end, I just want to say thank you for being a part of this beautiful chapter of my life. We've shared countless memories, laughter, struggles, and moments that I’ll cherish forever.",
     "Now, as we step into a new phase of life, I sincerely wish you all the happiness, success, and peace you deserve. May your dreams turn into reality, and may life treat you with kindness wherever you go.",
     "Never forget how far you’ve come, and never stop believing in yourself. No matter where life takes us, you’ll always be a friend I’m proud to have.",
-    "Good luck for everything that’s coming your way. Stay happy, stay true, and always keep that smile alive! 🎓✨"
+    "Good luck for everything that’s coming your way. Stay happy, stay true, and always keep that smile alive! 🎓✨",
+    "With warmest wishes,\nRaihan"
   ];
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -61,7 +62,7 @@ const FarewellContent: React.FC = () => {
         tl.fromTo(pRef, 
           { opacity: 0, x: -50 }, 
           { opacity: 1, x: 0, duration: 0.7 }, 
-          `-=0.4` 
+          "-=0.4"
         );
       }
     });
@@ -85,7 +86,7 @@ const FarewellContent: React.FC = () => {
             <p 
               key={index} 
               ref={el => messageParagraphRefs.current[index] = el}
-              className="leading-relaxed opacity-0" // Initial state for GSAP
+              className="leading-relaxed opacity-0 whitespace-pre-line" // Initial state for GSAP, added whitespace-pre-line for \n
             >
               {paragraph}
             </p>
